@@ -1,0 +1,318 @@
+
+<h2 class="sr-only">HORUS OS — Hybrid Intelligence System Dashboard by EchoWave Agency Ltd</h2>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.hn{cursor:pointer;padding:9px 16px;font-size:12px;display:flex;align-items:center;gap:9px;color:#6b6045;border-left:2px solid transparent;transition:all 0.15s;font-family:Georgia,serif}
+.hn:hover{color:#c9a848;background:rgba(201,168,72,0.06)}
+.hn.on{color:#c9a848;border-left-color:#c9a848;background:rgba(201,168,72,0.09)}
+.pg{display:none}.pg.on{display:block}
+.hc{background:#13100a;border:1px solid rgba(201,168,72,0.2);border-radius:8px;padding:16px}
+.hb{background:transparent;border:1px solid #c9a848;color:#c9a848;padding:9px 18px;border-radius:5px;cursor:pointer;font-family:Georgia,serif;font-size:12px;transition:all 0.15s}
+.hb:hover{background:rgba(201,168,72,0.14)}.hb:disabled{opacity:0.4;cursor:not-allowed}
+.hi{background:#1a1408;border:1px solid rgba(201,168,72,0.3);border-radius:6px;color:#e8dfc0;padding:9px 12px;font-family:Georgia,serif;font-size:13px;outline:none;resize:none}
+.hi:focus{border-color:#c9a848}
+.mu{background:rgba(78,205,100,0.13);color:#4ecd64;padding:2px 7px;border-radius:3px;font-size:10px;display:inline-block}
+.mb{background:rgba(100,150,255,0.13);color:#6496ff;padding:2px 7px;border-radius:3px;font-size:10px;display:inline-block}
+.mg{background:rgba(201,168,72,0.13);color:#c9a848;padding:2px 7px;border-radius:3px;font-size:10px;display:inline-block}
+.mr{background:rgba(220,80,80,0.13);color:#dc5050;padding:2px 7px;border-radius:3px;font-size:10px;display:inline-block}
+.chat-u{background:rgba(201,168,72,0.07);border:1px solid rgba(201,168,72,0.18);border-radius:8px;padding:12px;margin-bottom:10px}
+.chat-h{background:#13100a;border:1px solid rgba(201,168,72,0.15);border-radius:8px;padding:12px;margin-bottom:10px}
+.dc{background:#13100a;border:1px solid rgba(201,168,72,0.16);border-radius:7px;padding:13px;transition:all 0.2s;cursor:default}
+.dc:hover{border-color:rgba(201,168,72,0.38);background:#1a1408}
+.ag{background:#1a1408;border-radius:5px;padding:8px;font-size:11px}
+.qc{font-size:10px;color:#6b6045;background:#13100a;border:1px solid rgba(201,168,72,0.14);padding:5px 10px;border-radius:4px;cursor:pointer;transition:border-color 0.15s;display:inline-block;margin:3px 3px 0 0}
+.qc:hover{border-color:rgba(201,168,72,0.4);color:#c9a848}
+</style>
+
+<div style="background:#060401;border-radius:10px;overflow:hidden;font-family:Georgia,serif;color:#e8dfc0;min-height:680px;display:flex;flex-direction:column;">
+
+<!-- TOP BAR -->
+<div style="background:#0a0805;border-bottom:1px solid rgba(201,168,72,0.2);padding:0 18px;display:flex;align-items:center;justify-content:space-between;height:52px;flex-shrink:0;">
+  <div style="display:flex;align-items:center;gap:11px;">
+    <svg width="30" height="30" viewBox="0 0 32 32"><ellipse cx="16" cy="16" rx="14" ry="8.5" fill="none" stroke="#c9a848" stroke-width="1.5"/><circle cx="16" cy="16" r="4.5" fill="none" stroke="#c9a848" stroke-width="1.5"/><circle cx="16" cy="16" r="2" fill="#c9a848"/><path d="M16 20.5L14.5 26.5L16 24.5L17.5 26.5Z" fill="#c9a848"/><line x1="2" y1="16" x2="11.5" y2="16" stroke="#c9a848" stroke-width="0.7" stroke-opacity="0.5"/><line x1="20.5" y1="16" x2="30" y2="16" stroke="#c9a848" stroke-width="0.7" stroke-opacity="0.5"/></svg>
+    <div><div style="font-size:14px;color:#c9a848;letter-spacing:2.5px;font-weight:bold;">HORUS OS</div><div style="font-size:9px;color:#6b6045;letter-spacing:1.5px;">HYBRID INTELLIGENCE SYSTEM</div></div>
+  </div>
+  <div style="display:flex;align-items:center;gap:16px;">
+    <div style="display:flex;align-items:center;gap:5px;font-size:11px;color:#4ecd64;"><div style="width:5px;height:5px;border-radius:50%;background:#4ecd64;"></div>ONLINE</div>
+    <div style="display:flex;align-items:center;gap:5px;font-size:11px;color:#6b6045;"><div style="width:5px;height:5px;border-radius:50%;background:#c9a848;"></div>47 Agents</div>
+    <div style="font-size:11px;color:#6b6045;border-left:1px solid rgba(201,168,72,0.18);padding-left:14px;">EchoWave Agency Ltd</div>
+    <div id="clock" style="font-size:11px;color:#6b6045;background:#13100a;border:1px solid rgba(201,168,72,0.18);padding:4px 10px;border-radius:4px;"></div>
+  </div>
+</div>
+
+<div style="display:flex;flex:1;min-height:0;">
+
+<!-- SIDEBAR -->
+<div style="width:178px;background:#0a0805;border-right:1px solid rgba(201,168,72,0.12);flex-shrink:0;display:flex;flex-direction:column;">
+  <div style="padding:14px 16px 5px;font-size:9px;color:#6b6045;letter-spacing:2px;">COMMAND</div>
+  <div class="hn on" id="n-ov" onclick="sp('ov',this)"><svg width="13" height="13" fill="currentColor" viewBox="0 0 16 16"><rect x="1" y="1" width="6" height="6" rx="1"/><rect x="9" y="1" width="6" height="6" rx="1"/><rect x="1" y="9" width="6" height="6" rx="1"/><rect x="9" y="9" width="6" height="6" rx="1"/></svg>Overview</div>
+  <div class="hn" id="n-ag" onclick="sp('ag',this)"><svg width="13" height="13" fill="currentColor" viewBox="0 0 16 16"><path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/><path fill-rule="evenodd" d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"/><path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/></svg>Agents</div>
+  <div class="hn" id="n-ai" onclick="sp('ai',this)"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="8" cy="8" rx="7" ry="4.5"/><circle cx="8" cy="8" r="2.2"/><line x1="8" y1="10.2" x2="7" y2="14"/><line x1="8" y1="10.2" x2="9" y2="14"/></svg>Horus AI</div>
+  <div class="hn" id="n-tk" onclick="sp('tk',this)"><svg width="13" height="13" fill="currentColor" viewBox="0 0 16 16"><path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/><path d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zM4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"/></svg>Tasks</div>
+  <div class="hn" id="n-cp" onclick="sp('cp',this)"><svg width="13" height="13" fill="currentColor" viewBox="0 0 16 16"><path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811V2.828zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.746c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"/></svg>Campaigns</div>
+  <div class="hn" id="n-sc" onclick="sp('sc',this)"><svg width="13" height="13" fill="currentColor" viewBox="0 0 16 16"><path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/></svg>Social</div>
+  <div style="padding:14px 16px 5px;margin-top:4px;font-size:9px;color:#6b6045;letter-spacing:2px;">PRODUCTION</div>
+  <div class="hn" id="n-rn" onclick="sp('rn',this)"><svg width="13" height="13" fill="currentColor" viewBox="0 0 16 16"><path d="M6 12.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5ZM3 8.062C3 6.76 4.235 5.765 5.53 5.886a26.58 26.58 0 0 0 4.94 0C11.765 5.765 13 6.76 13 8.062v1.157a.933.933 0 0 1-.765.935c-.845.147-2.34.346-4.235.346-1.895 0-3.39-.2-4.235-.346A.933.933 0 0 1 3 9.219V8.062Z"/><path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492ZM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0Z"/></svg>Render Queue</div>
+  <div class="hn" id="n-as" onclick="sp('as',this)"><svg width="13" height="13" fill="currentColor" viewBox="0 0 16 16"><path d="M4 0h5.293A1 1 0 0 1 10 .293L13.707 4a1 1 0 0 1 .293.707V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zm5.5 1.5v2a1 1 0 0 0 1 1h2L9.5 1.5z"/></svg>Assets</div>
+  <div style="padding:14px 16px 5px;margin-top:4px;font-size:9px;color:#6b6045;letter-spacing:2px;">SYSTEM</div>
+  <div class="hn" id="n-adm" onclick="sp('adm',this)"><svg width="13" height="13" fill="currentColor" viewBox="0 0 16 16"><path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/><path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.892 3.433-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.892-1.64-.901-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.475l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"/></svg>Admin</div>
+  <div style="padding:10px;margin-top:auto;">
+    <div id="estop" onclick="emergStop()" style="background:rgba(200,50,50,0.09);border:1px solid rgba(200,50,50,0.28);color:#b03030;border-radius:5px;padding:7px;font-size:10px;text-align:center;cursor:pointer;letter-spacing:1px;transition:background 0.15s" onmouseover="this.style.background='rgba(200,50,50,0.18)'" onmouseout="this.style.background='rgba(200,50,50,0.09)'">⬛ EMERGENCY STOP</div>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div style="flex:1;overflow-y:auto;padding:20px;background:#0d0a05;">
+
+<!-- OVERVIEW -->
+<div id="pg-ov" class="pg on">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:18px;">
+    <div><div style="font-size:18px;color:#c9a848;letter-spacing:1px;margin-bottom:3px;">System Overview</div><div style="font-size:11px;color:#6b6045;">The Intelligence Behind Digital Dominance · EchoWave Agency Ltd</div></div>
+    <div style="font-size:10px;color:#c9a848;background:#13100a;border:1px solid rgba(201,168,72,0.2);padding:5px 12px;border-radius:4px;letter-spacing:1px;">▲ HORUS ACTIVE</div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px;">
+    <div style="background:#13100a;border:1px solid rgba(201,168,72,0.24);border-radius:8px;padding:14px;"><div style="font-size:9px;color:#6b6045;letter-spacing:1.5px;margin-bottom:6px;">ACTIVE AGENTS</div><div style="font-size:26px;color:#c9a848;font-weight:bold;line-height:1;">47</div><div style="font-size:10px;color:#4ecd64;margin-top:4px;">↑ 3 depts online</div></div>
+    <div style="background:#13100a;border:1px solid rgba(201,168,72,0.24);border-radius:8px;padding:14px;"><div style="font-size:9px;color:#6b6045;letter-spacing:1.5px;margin-bottom:6px;">TASKS TODAY</div><div style="font-size:26px;color:#c9a848;font-weight:bold;line-height:1;">12</div><div style="font-size:10px;color:#6496ff;margin-top:4px;">→ 4 pending review</div></div>
+    <div style="background:#13100a;border:1px solid rgba(201,168,72,0.24);border-radius:8px;padding:14px;"><div style="font-size:9px;color:#6b6045;letter-spacing:1.5px;margin-bottom:6px;">RENDER QUEUE</div><div style="font-size:26px;color:#c9a848;font-weight:bold;line-height:1;">3</div><div style="font-size:10px;color:#c9a848;margin-top:4px;">↗ 2 cloud · 1 local</div></div>
+    <div style="background:#13100a;border:1px solid rgba(201,168,72,0.24);border-radius:8px;padding:14px;"><div style="font-size:9px;color:#6b6045;letter-spacing:1.5px;margin-bottom:6px;">CAMPAIGNS LIVE</div><div style="font-size:26px;color:#c9a848;font-weight:bold;line-height:1;">2</div><div style="font-size:10px;color:#4ecd64;margin-top:4px;">↑ Egypt-UK corridor</div></div>
+  </div>
+  <div style="margin-bottom:16px;">
+    <div style="font-size:9px;color:#6b6045;letter-spacing:2px;margin-bottom:10px;">AGENT DEPARTMENTS</div>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:7px;">
+      <div class="dc"><div style="font-size:9px;color:#c9a848;letter-spacing:1px;margin-bottom:4px;">TECHNOLOGY</div><div style="font-size:10px;color:#6b6045;margin-bottom:5px;">7 agents</div><div class="mu">ACTIVE</div></div>
+      <div class="dc"><div style="font-size:9px;color:#c9a848;letter-spacing:1px;margin-bottom:4px;">CINEMATIC</div><div style="font-size:10px;color:#6b6045;margin-bottom:5px;">9 agents</div><div class="mu">ACTIVE</div></div>
+      <div class="dc"><div style="font-size:9px;color:#c9a848;letter-spacing:1px;margin-bottom:4px;">VOICE & AUDIO</div><div style="font-size:10px;color:#6b6045;margin-bottom:5px;">8 agents</div><div class="mb">RUNNING</div></div>
+      <div class="dc"><div style="font-size:9px;color:#c9a848;letter-spacing:1px;margin-bottom:4px;">MARKETING</div><div style="font-size:10px;color:#6b6045;margin-bottom:5px;">8 agents</div><div class="mg">IDLE</div></div>
+      <div class="dc"><div style="font-size:9px;color:#c9a848;letter-spacing:1px;margin-bottom:4px;">SALES</div><div style="font-size:10px;color:#6b6045;margin-bottom:5px;">8 agents</div><div class="mg">IDLE</div></div>
+      <div class="dc"><div style="font-size:9px;color:#c9a848;letter-spacing:1px;margin-bottom:4px;">CONTENT</div><div style="font-size:10px;color:#6b6045;margin-bottom:5px;">7 agents</div><div class="mu">ACTIVE</div></div>
+      <div class="dc"><div style="font-size:9px;color:#c9a848;letter-spacing:1px;margin-bottom:4px;">DESIGN</div><div style="font-size:10px;color:#6b6045;margin-bottom:5px;">7 agents</div><div class="mb">RUNNING</div></div>
+      <div class="dc"><div style="font-size:9px;color:#c9a848;letter-spacing:1px;margin-bottom:4px;">LEGAL & ADMIN</div><div style="font-size:10px;color:#6b6045;margin-bottom:5px;">6 agents</div><div class="mg">IDLE</div></div>
+      <div class="dc"><div style="font-size:9px;color:#c9a848;letter-spacing:1px;margin-bottom:4px;">EVENTS</div><div style="font-size:10px;color:#6b6045;margin-bottom:5px;">6 agents</div><div class="mg">IDLE</div></div>
+      <div class="dc"><div style="font-size:9px;color:#c9a848;letter-spacing:1px;margin-bottom:4px;">INTELLIGENCE</div><div style="font-size:10px;color:#6b6045;margin-bottom:5px;">6 agents</div><div class="mu">ACTIVE</div></div>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+    <div class="hc">
+      <div style="font-size:9px;color:#6b6045;letter-spacing:2px;margin-bottom:12px;">RECENT ACTIVITY</div>
+      <div style="display:flex;flex-direction:column;gap:9px;">
+        <div style="display:flex;align-items:flex-start;gap:9px;padding-bottom:9px;border-bottom:1px solid rgba(201,168,72,0.07);"><div class="mu" style="flex-shrink:0;">DONE</div><div><div style="font-size:12px;color:#e8dfc0;">Landing page hero section rendered</div><div style="font-size:10px;color:#6b6045;margin-top:2px;">Technology Dept · 2m ago</div></div></div>
+        <div style="display:flex;align-items:flex-start;gap:9px;padding-bottom:9px;border-bottom:1px solid rgba(201,168,72,0.07);"><div class="mb" style="flex-shrink:0;">RUN</div><div><div style="font-size:12px;color:#e8dfc0;">Voice generation: Cairo dialect — 3 assets</div><div style="font-size:10px;color:#6b6045;margin-top:2px;">Voice Dept · 5m ago</div></div></div>
+        <div style="display:flex;align-items:flex-start;gap:9px;padding-bottom:9px;border-bottom:1px solid rgba(201,168,72,0.07);"><div class="mg" style="flex-shrink:0;">PEND</div><div><div style="font-size:12px;color:#e8dfc0;">UK market expansion brief awaiting approval</div><div style="font-size:10px;color:#6b6045;margin-top:2px;">Growth Strategist · 12m ago</div></div></div>
+        <div style="display:flex;align-items:flex-start;gap:9px;"><div class="mu" style="flex-shrink:0;">DONE</div><div><div style="font-size:12px;color:#e8dfc0;">Social calendar Q2 generated — 47 posts</div><div style="font-size:10px;color:#6b6045;margin-top:2px;">Content Dept · 18m ago</div></div></div>
+      </div>
+    </div>
+    <div class="hc">
+      <div style="font-size:9px;color:#6b6045;letter-spacing:2px;margin-bottom:12px;">RENDER QUEUE</div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div style="padding:10px;background:#1a1408;border-radius:5px;border:1px solid rgba(201,168,72,0.12);"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;"><div style="font-size:11px;color:#e8dfc0;">EchoWave_Reel_v3.mp4</div><div class="mb">CLOUD</div></div><div style="background:rgba(201,168,72,0.1);border-radius:3px;height:3px;"><div id="r1" style="background:#c9a848;height:100%;width:67%;border-radius:3px;transition:width 1s;"></div></div><div style="font-size:10px;color:#6b6045;margin-top:4px;">67% · GCP GPU VM · ETA 8m</div></div>
+        <div style="padding:10px;background:#1a1408;border-radius:5px;border:1px solid rgba(201,168,72,0.12);"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;"><div style="font-size:11px;color:#e8dfc0;">Campaign_Hero_4K.png</div><div class="mb">CLOUD</div></div><div style="background:rgba(201,168,72,0.1);border-radius:3px;height:3px;"><div id="r2" style="background:#c9a848;height:100%;width:23%;border-radius:3px;transition:width 1s;"></div></div><div style="font-size:10px;color:#6b6045;margin-top:4px;">23% · ComfyUI SDXL · ETA 14m</div></div>
+        <div style="padding:10px;background:#1a1408;border-radius:5px;border:1px solid rgba(201,168,72,0.12);"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;"><div style="font-size:11px;color:#e8dfc0;">Intro_Motion.mp4</div><div class="mu">LOCAL</div></div><div style="background:rgba(201,168,72,0.1);border-radius:3px;height:3px;"><div id="r3" style="background:#4ecd64;height:100%;width:89%;border-radius:3px;transition:width 1s;"></div></div><div style="font-size:10px;color:#6b6045;margin-top:4px;">89% · Remotion Mac · ETA 1m</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- AGENTS -->
+<div id="pg-ag" class="pg">
+  <div style="margin-bottom:18px;"><div style="font-size:18px;color:#c9a848;letter-spacing:1px;margin-bottom:3px;">Agent Departments</div><div style="font-size:11px;color:#6b6045;">10 departments · 47 specialized intelligence agents</div></div>
+  <div style="display:flex;flex-direction:column;gap:11px;">
+    <div class="hc"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:11px;"><div style="font-size:12px;color:#c9a848;letter-spacing:1px;">TECHNOLOGY & PROGRAMMING</div><div class="mu">7 ACTIVE</div></div><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:7px;"><div class="ag"><div style="color:#e8dfc0;margin-bottom:2px;">Programming Agent</div><div style="color:#6b6045;font-size:10px;">General dev</div></div><div class="ag"><div style="color:#e8dfc0;margin-bottom:2px;">Full-Stack Agent</div><div style="color:#6b6045;font-size:10px;">Next.js · Supabase</div></div><div class="ag"><div style="color:#e8dfc0;margin-bottom:2px;">API Integration</div><div style="color:#6b6045;font-size:10px;">WhatsApp · Stripe</div></div><div class="ag"><div style="color:#e8dfc0;margin-bottom:2px;">Automation/n8n</div><div style="color:#6b6045;font-size:10px;">Workflows</div></div><div class="ag"><div style="color:#e8dfc0;margin-bottom:2px;">Security Agent</div><div style="color:#6b6045;font-size:10px;">Auth · Audit</div></div><div class="ag"><div style="color:#e8dfc0;margin-bottom:2px;">Performance</div><div style="color:#6b6045;font-size:10px;">Speed · SEO</div></div><div class="ag"><div style="color:#e8dfc0;margin-bottom:2px;">Supabase Agent</div><div style="color:#6b6045;font-size:10px;">DB · Storage</div></div></div></div>
+    <div class="hc"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:11px;"><div style="font-size:12px;color:#c9a848;letter-spacing:1px;">CINEMATIC PRODUCTION</div><div class="mu">9 ACTIVE</div></div><div style="display:grid;grid-template-columns:repeat(5,1fr);gap:7px;"><div class="ag"><div style="color:#e8dfc0;margin-bottom:2px;">Film Director</div><div style="color:#6b6045;font-size:10px;">Vision · Narrative</div></div><div class="ag"><div style="color:#e8dfc0;margin-bottom:2px;">Cinematography</div><div style="color:#6b6045;font-size:10px;">Framing · Lens</div></div><div class="ag"><div style="color:#e8dfc0;margin-bottom:2px;">Video Editor</div><div style="color:#6b6045;font-size:10px;">Cut · Sequence</div></div><div class="ag"><div style="color:#e8dfc0;margin-bottom:2px;">Color Grading</div><div style="color:#6b6045;font-size:10px;">Grade · LUT</div></div><div class="ag"><div style="color:#e8dfc0;margin-bottom:2px;">Motion Graphics</div><div style="color:#6b6045;font-size:10px;">Motion · AE</div></div><div class="ag"><div style="color:#e8dfc0;margin-bottom:2px;">AI Video Gen</div><div style="color:#6b6045;font-size:10px;">AnimateDiff</div></div><div class="ag"><div style="color:#e8dfc0;margin-bottom:2px;">Storyboard</div><div style="color:#6b6045;font-size:10px;">Visuals · Flow</div></div><div class="ag"><div style="color:#e8dfc0;margin-bottom:2px;">Exec Producer</div><div style="color:#6b6045;font-size:10px;">Budget · Delivery</div></div><div class="ag"><div style="color:#e8dfc0;margin-bottom:2px;">Lighting Agent</div><div style="color:#6b6045;font-size:10px;">Scene · Mood</div></div></div></div>
+    <div class="hc"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:11px;"><div style="font-size:12px;color:#c9a848;letter-spacing:1px;">VOICE & AUDIO</div><div class="mb">8 RUNNING</div></div><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:7px;"><div class="ag"><div style="color:#e8dfc0;margin-bottom:2px;">Voice Generation</div><div style="color:#6b6045;font-size:10px;">AR · EN dialects</div></div><div class="ag"><div style="color:#e8dfc0;margin-bottom:2px;">Dialect Control</div><div style="color:#6b6045;font-size:10px;">Cairo · Gulf · UK</div></div><div class="ag"><div style="color:#e8dfc0;margin-bottom:2px;">Music Director</div><div style="color:#6b6045;font-size:10px;">Score · Composition</div></div><div class="ag"><div style="color:#e8dfc0;margin-bottom:2px;">Sound Design</div><div style="color:#6b6045;font-size:10px;">SFX · Atmosphere</div></div><div class="ag"><div style="color:#e8dfc0;margin-bottom:2px;">Mix & Master</div><div style="color:#6b6045;font-size:10px;">Final output</div></div><div class="ag"><div style="color:#e8dfc0;margin-bottom:2px;">Composer</div><div style="color:#6b6045;font-size:10px;">Original tracks</div></div><div class="ag"><div style="color:#e8dfc0;margin-bottom:2px;">Voice Director</div><div style="color:#6b6045;font-size:10px;">Emotion · Pacing</div></div><div class="ag"><div style="color:#e8dfc0;margin-bottom:2px;">Lyricist</div><div style="color:#6b6045;font-size:10px;">Arabic · English</div></div></div></div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:11px;">
+      <div class="hc"><div style="font-size:12px;color:#c9a848;margin-bottom:10px;letter-spacing:1px;">MARKETING</div><div style="display:flex;flex-direction:column;gap:5px;font-size:11px;color:#e8dfc0;"><div>Strategy Agent</div><div>Market Research</div><div>SEO Agent</div><div>Paid Ads Agent</div><div>Funnel Agent</div><div>Analytics Agent</div><div>CRO Agent</div><div>Campaign Planner</div></div></div>
+      <div class="hc"><div style="font-size:12px;color:#c9a848;margin-bottom:10px;letter-spacing:1px;">SALES</div><div style="display:flex;flex-direction:column;gap:5px;font-size:11px;color:#e8dfc0;"><div>Sales Strategy</div><div>Lead Qualification</div><div>WhatsApp Closer</div><div>Cold Outreach</div><div>CRM / RevOps</div><div>Proposal Agent</div><div>Pricing Agent</div><div>Negotiation</div></div></div>
+      <div class="hc"><div style="font-size:12px;color:#c9a848;margin-bottom:10px;letter-spacing:1px;">CONTENT & SOCIAL</div><div style="display:flex;flex-direction:column;gap:5px;font-size:11px;color:#e8dfc0;"><div>Content Strategy</div><div>Copywriting</div><div>Scriptwriting</div><div>Social Manager</div><div>Community Mgr</div><div>FB · IG · TikTok</div><div>YouTube · LinkedIn</div><div>Calendar Planner</div></div></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:11px;">
+      <div class="hc"><div style="font-size:12px;color:#c9a848;margin-bottom:10px;letter-spacing:1px;">DESIGN</div><div style="display:flex;flex-direction:column;gap:5px;font-size:11px;color:#e8dfc0;"><div>Brand Strategist</div><div>Visual Identity</div><div>UI/UX Designer</div><div>Art Director</div><div>Graphic Designer</div><div>Presentation</div><div>Brand Guardian</div></div></div>
+      <div class="hc"><div style="font-size:12px;color:#c9a848;margin-bottom:10px;letter-spacing:1px;">LEGAL & ADMIN</div><div style="display:flex;flex-direction:column;gap:5px;font-size:11px;color:#e8dfc0;"><div>Legal Affairs</div><div>Contracts</div><div>Compliance</div><div>Company Admin</div><div>Finance/Invoicing</div><div>HR / Recruitment</div></div></div>
+      <div class="hc"><div style="font-size:12px;color:#c9a848;margin-bottom:10px;letter-spacing:1px;">EVENTS</div><div style="display:flex;flex-direction:column;gap:5px;font-size:11px;color:#e8dfc0;"><div>Event Strategy</div><div>Event Planning</div><div>Production</div><div>Vendor Mgmt</div><div>On-ground Exec</div><div>Post-event Report</div></div></div>
+      <div class="hc"><div style="font-size:12px;color:#c9a848;margin-bottom:10px;letter-spacing:1px;">INTELLIGENCE</div><div style="display:flex;flex-direction:column;gap:5px;font-size:11px;color:#e8dfc0;"><div>Competitive Intel</div><div>Industry Research</div><div>Trend Analysis</div><div>Audience Research</div><div>Offer Research</div><div>Feasibility</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- HORUS AI -->
+<div id="pg-ai" class="pg">
+  <div style="margin-bottom:16px;display:flex;align-items:center;gap:12px;">
+    <svg width="34" height="34" viewBox="0 0 36 36"><ellipse cx="18" cy="18" rx="16" ry="10" fill="none" stroke="#c9a848" stroke-width="1.5"/><circle cx="18" cy="18" r="5.5" fill="none" stroke="#c9a848" stroke-width="1.5"/><circle cx="18" cy="18" r="2.5" fill="#c9a848"/><path d="M18 23.5L16 31L18 28L20 31Z" fill="#c9a848"/></svg>
+    <div><div style="font-size:18px;color:#c9a848;letter-spacing:1px;">Horus Command Interface</div><div style="font-size:11px;color:#6b6045;">Direct intelligence — analyze · direct · execute · review</div></div>
+  </div>
+  <div class="hc" id="chat-box" style="margin-bottom:12px;height:340px;overflow-y:auto;">
+    <div class="chat-h"><div style="font-size:9px;color:#c9a848;letter-spacing:1.5px;margin-bottom:6px;">HORUS · INITIATING</div><div style="font-size:13px;line-height:1.7;color:#e8dfc0;">Systems online. I am HORUS — Hybrid Intelligence Orchestrator of EchoWave Agency. Operating across 10 departments, 47 agents. I analyze, direct, execute, and review.<br><br>I am the intelligence behind digital dominance. State your directive.</div></div>
+  </div>
+  <div style="display:flex;gap:10px;align-items:flex-end;margin-bottom:10px;">
+    <textarea id="user-input" class="hi" rows="3" placeholder="Issue a directive to HORUS... (Shift+Enter for newline)" style="flex:1;"></textarea>
+    <div style="display:flex;flex-direction:column;gap:7px;">
+      <button class="hb" id="send-btn" onclick="sendHorus()">EXECUTE →</button>
+      <button class="hb" onclick="clearHorus()" style="font-size:11px;padding:6px 14px;opacity:0.65;">CLEAR</button>
+    </div>
+  </div>
+  <div>
+    <div class="qc" onclick="qCmd('Draft a Q2 social media strategy for EchoWave — platforms, content themes, and posting cadence')">Social strategy brief →</div>
+    <div class="qc" onclick="qCmd('Which agents should I activate for a premium cinematic brand video production? Give me the full execution plan')">Cinematic production plan →</div>
+    <div class="qc" onclick="qCmd('Analyze our Egypt-UK corridor expansion. Which London agencies should EchoWave target and how?')">UK market analysis →</div>
+    <div class="qc" onclick="qCmd('Create a voice brief for a premium Cairo-dialect brand narration — gender, tone, emotion, pacing, energy curve')">Voice brief →</div>
+    <div class="qc" onclick="qCmd('Give me a fragmented product strategy using the 10ml approach for EchoWave services')">10ml product strategy →</div>
+  </div>
+</div>
+
+<!-- TASKS -->
+<div id="pg-tk" class="pg">
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:16px;">
+    <div><div style="font-size:18px;color:#c9a848;letter-spacing:1px;margin-bottom:3px;">Task Queue</div><div style="font-size:11px;color:#6b6045;">12 tasks today · 4 pending approval · 1 critical</div></div>
+    <button class="hb" style="font-size:11px;padding:7px 14px;">+ New Task</button>
+  </div>
+  <div class="hc">
+    <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:10px;padding-bottom:8px;border-bottom:1px solid rgba(201,168,72,0.14);font-size:9px;color:#6b6045;letter-spacing:1.5px;"><div>TASK</div><div>DEPT</div><div>STATUS</div><div>PRIORITY</div></div>
+    <div style="display:flex;flex-direction:column;">
+      <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:10px;padding:10px 0;border-bottom:1px solid rgba(201,168,72,0.06);font-size:12px;"><div style="color:#e8dfc0;">EchoWave Showreel 2025 — Final Edit</div><div style="color:#6b6045;">Cinematic</div><div><span class="mb">RUNNING</span></div><div style="color:#dc5050;">CRITICAL</div></div>
+      <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:10px;padding:10px 0;border-bottom:1px solid rgba(201,168,72,0.06);font-size:12px;"><div style="color:#e8dfc0;">UK Landing Page — Next.js Build</div><div style="color:#6b6045;">Technology</div><div><span class="mg">PENDING</span></div><div style="color:#c9a848;">HIGH</div></div>
+      <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:10px;padding:10px 0;border-bottom:1px solid rgba(201,168,72,0.06);font-size:12px;"><div style="color:#e8dfc0;">Social Calendar Q2 — Instagram 30 posts</div><div style="color:#6b6045;">Content</div><div><span class="mu">DONE</span></div><div style="color:#6b6045;">MEDIUM</div></div>
+      <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:10px;padding:10px 0;border-bottom:1px solid rgba(201,168,72,0.06);font-size:12px;"><div style="color:#e8dfc0;">Brand Identity Update — 2025 Refresh</div><div style="color:#6b6045;">Design</div><div><span class="mg">REVIEW</span></div><div style="color:#c9a848;">HIGH</div></div>
+      <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:10px;padding:10px 0;border-bottom:1px solid rgba(201,168,72,0.06);font-size:12px;"><div style="color:#e8dfc0;">Voice Pack — Cairo Premium Dialect x12</div><div style="color:#6b6045;">Voice</div><div><span class="mb">RUNNING</span></div><div style="color:#6b6045;">MEDIUM</div></div>
+      <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:10px;padding:10px 0;border-bottom:1px solid rgba(201,168,72,0.06);font-size:12px;"><div style="color:#e8dfc0;">Sales Proposal — Cairo Real Estate Client</div><div style="color:#6b6045;">Sales</div><div><span class="mg">PENDING</span></div><div style="color:#c9a848;">HIGH</div></div>
+      <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:10px;padding:10px 0;border-bottom:1px solid rgba(201,168,72,0.06);font-size:12px;"><div style="color:#e8dfc0;">Competitor Analysis — UK Creative Agencies</div><div style="color:#6b6045;">Intelligence</div><div><span class="mu">DONE</span></div><div style="color:#6b6045;">MEDIUM</div></div>
+      <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:10px;padding:10px 0;font-size:12px;"><div style="color:#e8dfc0;">WhatsApp Campaign — Follow-up Sequence</div><div style="color:#6b6045;">Sales</div><div><span class="mg">REVIEW</span></div><div style="color:#6b6045;">MEDIUM</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- CAMPAIGNS -->
+<div id="pg-cp" class="pg">
+  <div style="margin-bottom:16px;"><div style="font-size:18px;color:#c9a848;letter-spacing:1px;margin-bottom:3px;">Campaign Intelligence</div><div style="font-size:11px;color:#6b6045;">Egypt-UK corridor · Market expansion · Performance tracking</div></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
+    <div class="hc" style="border-color:rgba(201,168,72,0.32);"><div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:11px;"><div><div style="font-size:13px;color:#c9a848;">EchoWave Egypt Launch</div><div style="font-size:10px;color:#6b6045;margin-top:2px;">Q2 2026 · Cairo market</div></div><div class="mu">LIVE</div></div><div style="font-size:11px;color:#e8dfc0;line-height:1.7;margin-bottom:12px;">Premium agency positioning for Cairo. Cinematic brand films, social domination, high-ticket acquisition via Egyptian heritage narrative.</div><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:7px;"><div style="text-align:center;background:#1a1408;border-radius:5px;padding:8px;"><div style="font-size:16px;color:#c9a848;font-weight:bold;">24K</div><div style="font-size:9px;color:#6b6045;margin-top:2px;">REACH</div></div><div style="text-align:center;background:#1a1408;border-radius:5px;padding:8px;"><div style="font-size:16px;color:#c9a848;font-weight:bold;">8.4%</div><div style="font-size:9px;color:#6b6045;margin-top:2px;">CTR</div></div><div style="text-align:center;background:#1a1408;border-radius:5px;padding:8px;"><div style="font-size:16px;color:#c9a848;font-weight:bold;">3</div><div style="font-size:9px;color:#6b6045;margin-top:2px;">LEADS</div></div></div></div>
+    <div class="hc" style="border-color:rgba(100,150,255,0.25);"><div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:11px;"><div><div style="font-size:13px;color:#c9a848;">UK Market Entry</div><div style="font-size:10px;color:#6b6045;margin-top:2px;">Q3 2026 · London expansion</div></div><div class="mb">PREP</div></div><div style="font-size:11px;color:#e8dfc0;line-height:1.7;margin-bottom:12px;">Strategic entry into London creative market. Egyptian heritage as differentiator. Targeting mid-tier agencies for partnership along Egypt-UK corridor.</div><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:7px;"><div style="text-align:center;background:#1a1408;border-radius:5px;padding:8px;"><div style="font-size:16px;color:#c9a848;font-weight:bold;">12</div><div style="font-size:9px;color:#6b6045;margin-top:2px;">TARGETS</div></div><div style="text-align:center;background:#1a1408;border-radius:5px;padding:8px;"><div style="font-size:16px;color:#c9a848;font-weight:bold;">4</div><div style="font-size:9px;color:#6b6045;margin-top:2px;">CONTACTS</div></div><div style="text-align:center;background:#1a1408;border-radius:5px;padding:8px;"><div style="font-size:16px;color:#c9a848;font-weight:bold;">Q3</div><div style="font-size:9px;color:#6b6045;margin-top:2px;">LAUNCH</div></div></div></div>
+  </div>
+</div>
+
+<!-- SOCIAL -->
+<div id="pg-sc" class="pg">
+  <div style="margin-bottom:16px;"><div style="font-size:18px;color:#c9a848;letter-spacing:1px;margin-bottom:3px;">Social Intelligence Engine</div><div style="font-size:11px;color:#6b6045;">Q2 2026 calendar · Auto-scheduling · Manual approval required</div></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+    <div class="hc"><div style="font-size:9px;color:#6b6045;letter-spacing:2px;margin-bottom:11px;">PLATFORM STATUS</div><div style="display:flex;flex-direction:column;gap:8px;"><div style="display:flex;justify-content:space-between;align-items:center;padding:8px;background:#1a1408;border-radius:5px;font-size:12px;"><span style="color:#e8dfc0;">Instagram</span><div style="display:flex;align-items:center;gap:7px;"><span style="font-size:10px;color:#6b6045;">14 scheduled</span><div class="mu">ACTIVE</div></div></div><div style="display:flex;justify-content:space-between;align-items:center;padding:8px;background:#1a1408;border-radius:5px;font-size:12px;"><span style="color:#e8dfc0;">TikTok</span><div style="display:flex;align-items:center;gap:7px;"><span style="font-size:10px;color:#6b6045;">8 scheduled</span><div class="mu">ACTIVE</div></div></div><div style="display:flex;justify-content:space-between;align-items:center;padding:8px;background:#1a1408;border-radius:5px;font-size:12px;"><span style="color:#e8dfc0;">Facebook</span><div style="display:flex;align-items:center;gap:7px;"><span style="font-size:10px;color:#6b6045;">10 scheduled</span><div class="mu">ACTIVE</div></div></div><div style="display:flex;justify-content:space-between;align-items:center;padding:8px;background:#1a1408;border-radius:5px;font-size:12px;"><span style="color:#e8dfc0;">YouTube</span><div style="display:flex;align-items:center;gap:7px;"><span style="font-size:10px;color:#6b6045;">4 scheduled</span><div class="mg">REVIEW</div></div></div><div style="display:flex;justify-content:space-between;align-items:center;padding:8px;background:#1a1408;border-radius:5px;font-size:12px;"><span style="color:#e8dfc0;">LinkedIn</span><div style="display:flex;align-items:center;gap:7px;"><span style="font-size:10px;color:#6b6045;">6 scheduled</span><div class="mg">REVIEW</div></div></div></div></div>
+    <div class="hc"><div style="font-size:9px;color:#6b6045;letter-spacing:2px;margin-bottom:11px;">UPCOMING POSTS</div><div style="display:flex;flex-direction:column;gap:8px;font-size:11px;"><div style="padding:9px;background:#1a1408;border-radius:5px;"><div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="color:#e8dfc0;">Behind the scenes — Showreel BTS</span><span class="mu">IG</span></div><div style="color:#6b6045;font-size:10px;">Today · 18:00 · Pending approval</div></div><div style="padding:9px;background:#1a1408;border-radius:5px;"><div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="color:#e8dfc0;">Why Egyptian storytelling wins globally</span><span class="mb">LI</span></div><div style="color:#6b6045;font-size:10px;">Tomorrow · 09:00 · Approved</div></div><div style="padding:9px;background:#1a1408;border-radius:5px;"><div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="color:#e8dfc0;">Client result: 340% reach increase</span><span class="mu">FB</span></div><div style="color:#6b6045;font-size:10px;">Apr 29 · 12:00 · Approved</div></div><div style="padding:9px;background:#1a1408;border-radius:5px;"><div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="color:#e8dfc0;">HORUS OS — The Intelligence Reveal</span><div class="mb">TT</div></div><div style="color:#6b6045;font-size:10px;">May 1 · 20:00 · Draft</div></div></div></div>
+  </div>
+</div>
+
+<!-- RENDER -->
+<div id="pg-rn" class="pg">
+  <div style="margin-bottom:16px;"><div style="font-size:18px;color:#c9a848;letter-spacing:1px;margin-bottom:3px;">Render Engine</div><div style="font-size:11px;color:#6b6045;">Local Mac · Google Cloud GPU VM · ComfyUI · Remotion</div></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+    <div class="hc"><div style="font-size:9px;color:#6b6045;letter-spacing:2px;margin-bottom:11px;">LOCAL EXECUTION — MAC</div><div style="display:flex;align-items:center;gap:5px;margin-bottom:11px;"><div style="width:5px;height:5px;border-radius:50%;background:#4ecd64;"></div><span style="font-size:11px;color:#4ecd64;">Online · Ready</span></div><div style="display:flex;flex-direction:column;gap:7px;font-size:11px;"><div style="display:flex;justify-content:space-between;padding:8px;background:#1a1408;border-radius:5px;"><span style="color:#e8dfc0;">Remotion Engine</span><div class="mu">ACTIVE</div></div><div style="display:flex;justify-content:space-between;padding:8px;background:#1a1408;border-radius:5px;"><span style="color:#e8dfc0;">Voice TTS Local</span><div class="mu">ACTIVE</div></div><div style="display:flex;justify-content:space-between;padding:8px;background:#1a1408;border-radius:5px;"><span style="color:#e8dfc0;">Coding Agents</span><div class="mu">ACTIVE</div></div><div style="display:flex;justify-content:space-between;padding:8px;background:#1a1408;border-radius:5px;"><span style="color:#e8dfc0;">Social Scheduler</span><div class="mg">IDLE</div></div></div></div>
+    <div class="hc"><div style="font-size:9px;color:#6b6045;letter-spacing:2px;margin-bottom:11px;">GOOGLE CLOUD GPU VM</div><div style="display:flex;align-items:center;gap:5px;margin-bottom:11px;"><div style="width:5px;height:5px;border-radius:50%;background:#c9a848;"></div><span style="font-size:11px;color:#c9a848;">Running · 2 jobs active</span></div><div style="display:flex;flex-direction:column;gap:7px;font-size:11px;"><div style="display:flex;justify-content:space-between;padding:8px;background:#1a1408;border-radius:5px;"><span style="color:#e8dfc0;">ComfyUI · SDXL</span><div class="mb">RUNNING</div></div><div style="display:flex;justify-content:space-between;padding:8px;background:#1a1408;border-radius:5px;"><span style="color:#e8dfc0;">AnimateDiff Video</span><div class="mb">RUNNING</div></div><div style="display:flex;justify-content:space-between;padding:8px;background:#1a1408;border-radius:5px;"><span style="color:#e8dfc0;">4K Render Pipeline</span><div class="mg">QUEUED</div></div><div style="display:flex;justify-content:space-between;padding:8px;background:#1a1408;border-radius:5px;"><span style="color:#e8dfc0;">Supabase Storage</span><div class="mu">SYNCING</div></div></div></div>
+  </div>
+</div>
+
+<!-- ASSETS -->
+<div id="pg-as" class="pg">
+  <div style="margin-bottom:16px;"><div style="font-size:18px;color:#c9a848;letter-spacing:1px;margin-bottom:3px;">Assets Library</div><div style="font-size:11px;color:#6b6045;">Generated assets · Supabase Storage · Export pipeline</div></div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:9px;">
+    <div style="background:#13100a;border:1px solid rgba(201,168,72,0.18);border-radius:8px;overflow:hidden;"><div style="height:80px;background:#1a1408;display:flex;align-items:center;justify-content:center;font-size:26px;color:rgba(201,168,72,0.25);">▶</div><div style="padding:10px;"><div style="font-size:11px;color:#e8dfc0;margin-bottom:3px;">Showreel_v3.mp4</div><div style="font-size:10px;color:#6b6045;">1.2 GB · 4K · Video</div><div class="mu" style="margin-top:5px;">NEW</div></div></div>
+    <div style="background:#13100a;border:1px solid rgba(201,168,72,0.18);border-radius:8px;overflow:hidden;"><div style="height:80px;background:#0a1020;display:flex;align-items:center;justify-content:center;font-size:26px;color:rgba(100,150,255,0.25);">◼</div><div style="padding:10px;"><div style="font-size:11px;color:#e8dfc0;margin-bottom:3px;">Hero_Campaign_4K.png</div><div style="font-size:10px;color:#6b6045;">42 MB · 4K · Image</div><div class="mb" style="margin-top:5px;">CLOUD</div></div></div>
+    <div style="background:#13100a;border:1px solid rgba(201,168,72,0.18);border-radius:8px;overflow:hidden;"><div style="height:80px;background:#0a1a10;display:flex;align-items:center;justify-content:center;font-size:26px;color:rgba(78,205,100,0.25);">♫</div><div style="padding:10px;"><div style="font-size:11px;color:#e8dfc0;margin-bottom:3px;">Cairo_Narration_v2.mp3</div><div style="font-size:10px;color:#6b6045;">8.4 MB · Voice · AR</div><div class="mu" style="margin-top:5px;">READY</div></div></div>
+    <div style="background:#13100a;border:1px solid rgba(201,168,72,0.18);border-radius:8px;overflow:hidden;"><div style="height:80px;background:#1a1408;display:flex;align-items:center;justify-content:center;font-size:26px;color:rgba(201,168,72,0.25);">⬡</div><div style="padding:10px;"><div style="font-size:11px;color:#e8dfc0;margin-bottom:3px;">Brand_Identity_2025.pdf</div><div style="font-size:10px;color:#6b6045;">24 MB · Brand · Guide</div><div class="mg" style="margin-top:5px;">REVIEW</div></div></div>
+  </div>
+</div>
+
+<!-- ADMIN -->
+<div id="pg-adm" class="pg">
+  <div style="margin-bottom:16px;"><div style="font-size:18px;color:#c9a848;letter-spacing:1px;margin-bottom:3px;">System Administration</div><div style="font-size:11px;color:#6b6045;">Security · Users · API keys · Audit logs · Emergency controls</div></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+    <div class="hc"><div style="font-size:9px;color:#6b6045;letter-spacing:2px;margin-bottom:11px;">USERS & ROLES</div><div style="display:flex;flex-direction:column;gap:8px;font-size:12px;"><div style="display:flex;justify-content:space-between;align-items:center;padding:9px;background:#1a1408;border-radius:5px;"><div><div style="color:#e8dfc0;">EchoWave Admin</div><div style="font-size:10px;color:#6b6045;margin-top:1px;">owner@echowave.agency</div></div><div style="background:rgba(201,168,72,0.14);color:#c9a848;padding:2px 7px;border-radius:3px;font-size:10px;">MASTER</div></div><div style="display:flex;justify-content:space-between;align-items:center;padding:9px;background:#1a1408;border-radius:5px;"><div><div style="color:#e8dfc0;">Creative Lead</div><div style="font-size:10px;color:#6b6045;margin-top:1px;">creative@echowave.agency</div></div><div class="mu">LEAD</div></div><div style="display:flex;justify-content:space-between;align-items:center;padding:9px;background:#1a1408;border-radius:5px;"><div><div style="color:#e8dfc0;">Tech Engineer</div><div style="font-size:10px;color:#6b6045;margin-top:1px;">tech@echowave.agency</div></div><div class="mb">ENGINEER</div></div></div></div>
+    <div class="hc"><div style="font-size:9px;color:#6b6045;letter-spacing:2px;margin-bottom:11px;">SECURITY STATUS</div><div style="display:flex;flex-direction:column;gap:7px;font-size:11px;"><div style="display:flex;justify-content:space-between;padding:8px;background:#1a1408;border-radius:5px;"><span style="color:#e8dfc0;">Supabase Auth</span><div class="mu">SECURED</div></div><div style="display:flex;justify-content:space-between;padding:8px;background:#1a1408;border-radius:5px;"><span style="color:#e8dfc0;">API Key Vault</span><div class="mu">SECURED</div></div><div style="display:flex;justify-content:space-between;padding:8px;background:#1a1408;border-radius:5px;"><span style="color:#e8dfc0;">Role Permissions</span><div class="mu">ACTIVE</div></div><div style="display:flex;justify-content:space-between;padding:8px;background:#1a1408;border-radius:5px;"><span style="color:#e8dfc0;">Audit Trail</span><div class="mu">LOGGING</div></div><div style="display:flex;justify-content:space-between;padding:8px;background:#1a1408;border-radius:5px;"><span style="color:#e8dfc0;">Publish Approval</span><div class="mu">REQUIRED</div></div></div></div>
+  </div>
+</div>
+
+</div></div></div>
+
+<script>
+var ch=[];
+var sysP="You are HORUS — the Hybrid Intelligence Orchestrator of EchoWave Agency Ltd.\n\nYour character:\n- Strategic. Precise. Cinematic. Authoritative.\n- Egyptian wisdom meets modern digital mastery.\n- You speak in clean, direct, structured language.\n- You analyze → direct → execute → review → refine.\n- Never casual, never vague. Always purposeful.\n- Tone: premium, decisive, like a supreme intelligence system.\n\nEchoWave Agency operates:\n- Creative Production: premium cinematic visuals for high-end clients\n- Full-Stack Engineering: Next.js, Tailwind, Supabase, Stripe, WhatsApp API\n- Growth Strategy: Egypt-UK market corridor, product fragmentation (10ml approach)\n\nYou have 10 departments and 47 agents: Technology & Programming, Cinematic Production, Voice & Audio, Marketing, Sales, Content & Social Media, Design & Branding, Legal & Admin, Events, Research Intelligence.\n\nThe Voice system supports: Arabic (Cairo premium, street, youth, Saeedi, Alexandrian), Gulf Arabic (Saudi, UAE, Kuwaiti), British English, American English. Voice controls include: gender, age, accent, dialect, tone, emotion, intensity, pacing, pauses, breathing, emphasis, energy curve, cinematic delivery.\n\nWhen given a directive:\n1. Analyze the request\n2. Identify which departments/agents to activate\n3. Give a structured execution plan\n4. Flag any risks or approvals needed\n\nUse brief clear headers. Be actionable. This is a command interface, not a conversation.";
+
+function sp(p,el){
+  document.querySelectorAll('.pg').forEach(function(x){x.classList.remove('on')});
+  document.querySelectorAll('.hn').forEach(function(x){x.classList.remove('on')});
+  var pg=document.getElementById('pg-'+p);
+  if(pg)pg.classList.add('on');
+  if(el)el.classList.add('on');
+}
+
+function emergStop(){
+  var e=document.getElementById('estop');
+  e.textContent='✓ ALL SYSTEMS HALTED';
+  e.style.background='rgba(200,50,50,0.25)';
+  e.style.color='#ff4444';
+  setTimeout(function(){
+    e.textContent='⬛ EMERGENCY STOP';
+    e.style.background='rgba(200,50,50,0.09)';
+    e.style.color='#b03030';
+  },3000);
+}
+
+setInterval(function(){
+  var c=document.getElementById('clock');
+  if(c){var n=new Date();c.textContent=n.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit',second:'2-digit'})+' CAI';}
+},1000);
+
+var rv=[{id:'r1',v:67,s:0.25,max:99},{id:'r2',v:23,s:0.12,max:99},{id:'r3',v:89,s:0.4,max:100}];
+setInterval(function(){
+  rv.forEach(function(b){
+    if(b.v<b.max){b.v=Math.min(b.max,b.v+b.speed||b.v+b.s);var el=document.getElementById(b.id);if(el)el.style.width=Math.round(b.v)+'%';}
+  });
+},1200);
+
+function qCmd(t){document.getElementById('user-input').value=t;sendHorus();}
+
+async function sendHorus(){
+  var inp=document.getElementById('user-input');
+  var btn=document.getElementById('send-btn');
+  var txt=inp.value.trim();
+  if(!txt)return;
+  inp.value='';
+  btn.disabled=true;
+  btn.textContent='PROCESSING...';
+  var box=document.getElementById('chat-box');
+  var ud=document.createElement('div');
+  ud.className='chat-u';
+  ud.innerHTML='<div style="font-size:9px;color:#6b6045;letter-spacing:1.5px;margin-bottom:5px;">YOU ·</div><div style="font-size:13px;line-height:1.6;color:#e8dfc0;">'+esc(txt)+'</div>';
+  box.appendChild(ud);
+  var td=document.createElement('div');
+  td.className='chat-h';
+  td.innerHTML='<div style="font-size:9px;color:#c9a848;letter-spacing:1.5px;margin-bottom:5px;">HORUS · ANALYZING</div><div style="font-size:12px;color:#6b6045;font-style:italic;">Processing directive...</div>';
+  box.appendChild(td);
+  box.scrollTop=box.scrollHeight;
+  ch.push({role:'user',content:txt});
+  try{
+    var r=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:sysP,messages:ch})
+    });
+    var d=await r.json();
+    var rep=d.content[0].text;
+    ch.push({role:'assistant',content:rep});
+    td.innerHTML='<div style="font-size:9px;color:#c9a848;letter-spacing:1.5px;margin-bottom:6px;">HORUS · DIRECTIVE PROCESSED</div><div style="font-size:13px;line-height:1.75;color:#e8dfc0;white-space:pre-wrap;">'+esc(rep)+'</div>';
+  }catch(e){
+    td.innerHTML='<div style="font-size:9px;color:#dc5050;letter-spacing:1.5px;margin-bottom:5px;">HORUS · CONNECTION ERROR</div><div style="font-size:12px;color:#dc5050;">Unable to reach intelligence core. Verify API connection.</div>';
+  }
+  box.scrollTop=box.scrollHeight;
+  btn.disabled=false;
+  btn.textContent='EXECUTE →';
+}
+
+function clearHorus(){
+  ch=[];
+  var box=document.getElementById('chat-box');
+  box.innerHTML='<div class="chat-h"><div style="font-size:9px;color:#c9a848;letter-spacing:1.5px;margin-bottom:6px;">HORUS · MEMORY CLEARED</div><div style="font-size:13px;line-height:1.7;color:#e8dfc0;">Context reset. Awaiting new directive.</div></div>';
+}
+
+function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+
+document.addEventListener('DOMContentLoaded',function(){
+  var ui=document.getElementById('user-input');
+  if(ui)ui.addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendHorus();}});
+});
+</script>
